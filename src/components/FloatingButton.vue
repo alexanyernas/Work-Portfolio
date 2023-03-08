@@ -1,61 +1,37 @@
 <template>
   <div class="floating-container">
-    <div 
-      @click="openWhatsAppTab"
-      class="floating-button"
-    >
-        <v-icon icon="mdi-whatsapp" />
-        <v-tooltip
-            activator="parent"
-            location="start"
-        >
-            WhatsApp
-        </v-tooltip>
+    <div class="floating-button">
+      <v-icon icon="mdi-translate-variant" />
     </div>
-  </div>
+    <div class="element-container">
+        <span class="float-element" @click="changeLanguage('es')">
+          ES
+        </span>
+        <span class="float-element" @click="changeLanguage('en')">
+          EN
+        </span>
+      </div>
+    </div>
 </template>
 
 <script>
 import { defineComponent } from 'vue';
+import i18n from '../plugins/i18n';
+
+// Styling
+import './styles/FloatingButton.css';
 
 export default defineComponent({
     name: 'FloatingButton',
-    setup() {
-      
-      const openWhatsAppTab = () => {
-        window.open('https://wa.me/+584120283147', '_blank');
+    setup () {
+
+      const changeLanguage = (lang) => {
+        i18n.global.locale = lang;
       }
 
-      return {
-        openWhatsAppTab
+      return { 
+        changeLanguage
       }
-
     }
 });
 </script>
-
-<style scoped>
-.floating-container {
-  position: fixed;
-  width: 100px;
-  height: 100px;
-  bottom: 0;
-  right: 0;
-  margin: 20px;
-}
-.floating-container .floating-button {
-  position: absolute;
-  width: 55px;
-  height: 55px;
-  background: #128C7E;
-  bottom: 0;
-  border-radius: 50%;
-  right: 0;
-  color: #FFF;
-  line-height: 55px;
-  text-align: center;
-  font-size: 21px;
-  z-index: 100;
-  cursor: pointer;
-}
-</style>

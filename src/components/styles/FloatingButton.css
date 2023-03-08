@@ -1,0 +1,80 @@
+@keyframes come-in {
+  0% {
+    transform: translatey(100px);
+    opacity: 0;
+  }
+  30% {
+    transform: translateX(-50px) scale(0.4);
+  }
+  70% {
+    transform: translateX(0px) scale(1.2);
+  }
+  100% {
+    transform: translatey(0px) scale(1);
+    opacity: 1;
+  }
+}
+
+.floating-container {
+  position: fixed;
+  width: 100px;
+  height: 100px;
+  bottom: 0;
+  right: 0;
+  margin: 20px;
+}
+
+.floating-container:hover {
+  height: 225px;
+}
+
+.floating-container:hover .element-container .float-element:nth-child(1) {
+  animation: come-in 0.4s forwards 0.2s;
+}
+
+.floating-container:hover .element-container .float-element:nth-child(2) {
+  animation: come-in 0.4s forwards 0.4s;
+}
+
+.floating-container .floating-button {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: #78909C;
+  bottom: 0;
+  border-radius: 50%;
+  right: 0;
+  margin: auto;
+  color: white;
+  line-height: 60px;
+  text-align: center;
+  font-size: 22px;
+  z-index: 100;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.floating-container .float-element {
+  cursor: pointer;
+  position: relative;
+  display: block;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  margin: 20px 45px;
+  color: white;
+  font-weight: 500;
+  text-align: center;
+  line-height: 50px;
+  z-index: 0;
+  opacity: 0;
+  transform: translateY(100px);
+}
+
+.floating-container .float-element:nth-child(1) {
+  background: #EF9A9A;
+}
+
+.floating-container .float-element:nth-child(2) {
+  background: #90CAF9;
+}
